@@ -1,0 +1,8 @@
+<%= form_for @survey_user, :url => { :action => :director } do |f| %>
+<%= f.label "Enter your id code" %>
+<%= f.text_field :code, :value => params[:code] %>
+<%= f.submit "Submit" %>
+<% end %>
+	<div class="container">
+		<%= debug(params) if Rails.env.development? %>
+	</div>

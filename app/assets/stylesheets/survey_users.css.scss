@@ -1,0 +1,41 @@
+.q {
+	label { display:block; }
+	display: block;
+	width: 400px;
+	margin-bottom: 100px;
+	.PIL_radio {
+		label {
+			display: block;
+			padding-left: 20px;
+			padding-right: 20px;
+			font-size: larger;
+		}
+
+		display: inline-block;
+		text-align: center;
+	}
+	
+	.labels {
+		display: block;
+		width: 100%;
+		font-size: smaller;
+		.left{
+			float: left;
+			text-align: left;
+			padding-left: 10px;
+			width: 190px;
+		}
+		
+		.right{
+			text-align: right;
+			float: right;
+			width: 190px;
+			}
+	}
+}
+
+.ms, .caregiver {
+	display: none
+}
+ 
+

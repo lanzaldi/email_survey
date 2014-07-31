@@ -1,0 +1,65 @@
+<h1>SurveyUser</h1>	
+<%= form_for @survey_user, :url => new_survey_user_path(code: params[:code]) do |f| %>
+	<p>Have you already answered these questions? <a href="<%=start_path(code: params[:code])%>">Go back </a> and make sure you entered your ID code properly</p>
+	<div class="dq">
+		<%= f.label "Gender" %>
+		<%= errors_for(@survey_user, :gender) %>
+		<%= f.select :gender, ["", "Male", "Female"] %>
+	</div>
+	
+	<div class="dq">
+		<%= f.label "Age" %>
+		<%= errors_for(@survey_user, :age) %>
+		<%= f.select :age, ["", "18-30", "31-40", "41-50", "51-60", "61-70", "71-80", "80+"] %>
+	</div>
+	
+	<div class="dq">
+		<%= f.label "Highest Level of Education:" %>
+		<%= errors_for(@survey_user, :education) %>
+		<%= f.select :education, ["", "High school", "College", "Graduate school", "None of the above"] %>
+	</div>
+	
+	<div class="dq">
+		<%= f.label "Do you have MS or are you a caregiver for someone with MS?" %>
+		<%= errors_for(@survey_user, :person_type) %>
+
+		<%= f.label :person_type_ms, "I HAVE MS" %>
+		<%= f.radio_button :person_type, "ms" %>
+	
+
+		<%= f.label :person_type_caregiver, "I AM A CAREGIVER" %>
+		<%= f.radio_button :person_type, "caregiver" %>
+		
+		<div class = "ms">
+		<div class = "dq">
+		<%= f.label "What kind of MS do you have?" %>
+		<%= errors_for(@survey_user, :ms_type) %>
+		<%= f.select :ms_type, ["", "Relapsing-remitting", "Primary progressive", "Secondary progressive", "Progressive relapsing"] %>
+		</div>
+		
+		<div class= "dq" >
+		<%= f.label "How long ago were you diagnosed?" %>
+		<%= errors_for(@survey_user, :length_of_time_ms) %>
+		<%= f.select :length_of_time_ms, ["", "< 6 months", "6 months-1 year", "1-2 years", "2-3 years", "3-4 years", "4-5 years", "5+ years"] %>
+		</div>
+	</div>
+		
+	<div class="caregiver">
+		<div class="dq">
+			<%= f.label "How long have you been a caregiver?" %>
+			<%= errors_for(@survey_user, :length_of_time_care) %>
+			<%= f.select :length_of_time_care, ["", "<6 months", "6 months - 1 year", "1-2 years", "3-4 years", "4-5 years", "5+ years"] %>
+		</div>
+		<div class="dq">
+			<%= f.label "I provide care for my:" %>
+			<%= errors_for(@survey_user, :care_for) %>
+			<%= f.select :care_for, ["", "Parent", "Child", "Sibling", "Spouse", "Other family member", "Friend/Other" ] %>
+		</div>
+			</div>
+	</div>
+	<%= f.submit "Continue" %>
+<% end %>
+		
+<div class="container">
+		<%= debug(params) if Rails.env.development? %>
+		</div>

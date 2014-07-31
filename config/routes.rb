@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  match '/emails', to: 'emails#new', via: 'get'
+  match '/emails', to: 'emails#create', via: 'post'
+  match '/cancel', to: 'emails#edit', via: 'get'
+  match '/cancel', to: 'emails#update', via: 'post'
+  match '/confirm', to: 'emails#confirm', via: 'get'
+  match '/thankyou', to: 'emails#thankyou', via: 'get'
+  match '/error', to: 'emails#no_authorization', via: 'get'
+  
+  match '/start', to: 'survey_users#start', via: 'get'
+  match '/start', to: 'survey_users#director', via: 'post'
+  
+  match '/survey_users/new', to: 'survey_users#create', via: 'post'
+  match '/surveys/new', to: 'surveys#create', via: 'post'
+  resources :survey_users
+  resources :surveys
+
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

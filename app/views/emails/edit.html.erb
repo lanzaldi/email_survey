@@ -1,0 +1,31 @@
+<div class="container activity">
+<div class="row">
+<div class="span12">
+	<%= form_for @email, :url => cancel_path do |f| %>
+		<% if @email.errors.any? %>
+			<ul>
+			<% @email.errors.full_messages.each do |m| %>
+				<li><%= m %></li>
+			<% end %>
+			</ul>
+		<% end %>
+		
+		<% flash.each do |k, v| %>
+			<div class = "alert alert-<%= k %>"><%= v %></div>
+		<% end %>
+		
+		<%= f.label "Please enter your email address:" %>
+		<%= f.text_field :email %>
+		<%= f.label "Why do you no longer want to receive surveys?" %>
+		<%= f.select :why_no, ["", "Surveys were too long", "Surveys were too frequent", "Uncomfortable answering the questions", "Other"] %>
+		<%= f.submit "Leave study" %>
+	<% end %>
+
+	<span>If you still want to participate in this study and came to this page by mistake, simply close this tab/window.</span>
+	</center>
+</div>
+</div>
+</div>
+	<div class="container">
+		<%= debug(params) if Rails.env.development? %>
+	</div>
